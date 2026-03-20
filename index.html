@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinic Scheduling System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <p class="eyebrow">PAINEL CLÍNICO</p>
+        <h1>MedCare</h1>
+        <p class="sidebar-text">
+          Sistema de agendamento para organização de consultas e atendimentos.
+        </p>
+      </div>
+
+      <div class="sidebar-cards">
+        <div class="mini-stat">
+          <span>Total</span>
+          <strong id="totalCount">0</strong>
+        </div>
+
+        <div class="mini-stat">
+          <span>Confirmados</span>
+          <strong id="confirmedCount">0</strong>
+        </div>
+
+        <div class="mini-stat">
+          <span>Pendentes</span>
+          <strong id="pendingCount">0</strong>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <h2>Sistema de Agendamento</h2>
+          <p>Cadastre, filtre e gerencie consultas com praticidade.</p>
+        </div>
+      </header>
+
+      <section class="dashboard-cards">
+        <div class="card stat-card">
+          <span>Consultas do dia</span>
+          <strong id="todayCount">0</strong>
+        </div>
+
+        <div class="card stat-card">
+          <span>Próximo horário</span>
+          <strong id="nextAppointment">--</strong>
+        </div>
+
+        <div class="card stat-card">
+          <span>Serviço mais agendado</span>
+          <strong id="topService">--</strong>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="card form-card">
+          <div class="section-header">
+            <h3>Novo agendamento</h3>
+            <p>Preencha os dados da consulta.</p>
+          </div>
+
+          <form id="appointmentForm" class="appointment-form">
+            <div class="form-grid">
+              <div class="field">
+                <label for="patientName">Nome do paciente</label>
+                <input type="text" id="patientName" placeholder="Ex: Ana Souza" />
+              </div>
+
+              <div class="field">
+                <label for="service">Serviço</label>
+                <select id="service">
+                  <option value="">Selecione</option>
+                  <option value="Consulta geral">Consulta geral</option>
+                  <option value="Pediatria">Pediatria</option>
+                  <option value="Dermatologia">Dermatologia</option>
+                  <option value="Cardiologia">Cardiologia</option>
+                  <option value="Exame de rotina">Exame de rotina</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="date">Data</label>
+                <input type="date" id="date" />
+              </div>
+
+              <div class="field">
+                <label for="time">Horário</label>
+                <select id="time">
+                  <option value="">Selecione</option>
+                  <option>08:00</option>
+                  <option>09:00</option>
+                  <option>10:00</option>
+                  <option>11:00</option>
+                  <option>13:00</option>
+                  <option>14:00</option>
+                  <option>15:00</option>
+                  <option>16:00</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="doctor">Profissional</label>
+                <select id="doctor">
+                  <option value="">Selecione</option>
+                  <option value="Dra. Camila Rocha">Dra. Camila Rocha</option>
+                  <option value="Dr. Lucas Martins">Dr. Lucas Martins</option>
+                  <option value="Dra. Renata Alves">Dra. Renata Alves</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="status">Status</label>
+                <select id="status">
+                  <option value="">Selecione</option>
+                  <option value="Confirmado">Confirmado</option>
+                  <option value="Pendente">Pendente</option>
+                  <option value="Cancelado">Cancelado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="notes">Observações</label>
+              <textarea id="notes" rows="4" placeholder="Informações adicionais..."></textarea>
+            </div>
+
+            <p id="formMessage" class="form-message"></p>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Salvar agendamento</button>
+              <button type="button" id="clearBtn" class="secondary-btn">Limpar</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card list-card">
+          <div class="section-header">
+            <div>
+              <h3>Agendamentos</h3>
+              <p>Gerencie consultas cadastradas.</p>
+            </div>
+
+            <select id="filterStatus" class="filter-select">
+              <option value="Todos">Todos</option>
+              <option value="Confirmado">Confirmado</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Cancelado">Cancelado</option>
+            </select>
+          </div>
+
+          <div id="appointmentList" class="appointment-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
